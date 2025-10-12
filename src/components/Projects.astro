@@ -1,0 +1,35 @@
+---
+const PROJECTS = [
+  {
+    title: "Proyecto 1",
+    description: "lorem10",
+    link: "https://proyecto1.dev",
+    github: "https://repo-proyecto1.github.com",
+    image: "link",
+    tags: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    title: "Proyecto 2",
+    description: "lorem 2",
+    link: "",
+    github: "https://proyecto2.dev",
+    image: "link2",
+    tags: ["Azure", "C#", "JavaScript"],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, link,image, tags }) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-yellow-200 mb-2 mt-2">{title}</h3>
+      <p class="text-lg mb-4 ">{description}</p>
+      <ul class="flex flex-wrap items-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        {tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+      <img class="rounded shadow-2xl shadow-white/10"  src={image} alt="Captura de pantalla del proyecto">
+    </article>
+  ))
+}

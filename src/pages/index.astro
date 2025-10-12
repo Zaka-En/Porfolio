@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+import LinkedInIcon from "../icons/LinkedInIcon.astro";
+import GithubIcon from "../icons/GithubIcon.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GmailIcon from "../icons/GmailIcon.astro";
+import Code from "../icons/CodeIcon.astro";
+import Projects from "../components/Projects.astro";
+import Footer from "../components/Footer.astro";
+import Contacto from "../components/Contacto.astro";
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="Portfolio de Zakaria">
+  <main class="px-4">
+    <section id="sobre-mi" class="w-full mx-auto lg:w-[740px] py-22">
+      <h1
+        class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-4"
+      >
+        Hola, soy Zakaria<div
+          class="flex justify-center place-items-center-safe"
+        >
+          <Badge>Disponible para trabajar</Badge>
+        </div>
+      </h1>
+      <h2 class="opacity-80 text-xl lg:text-1.5xl text-pretty">
+        Soy un <span class="text-yellow-300">Desarrollador web</span> recién graduado
+        en el ciclo formativo superior de Desarrollo de Aplicaciones Web (DAW). Me
+        apasiona crear soluciones digitales funcionales y bien estructuradas, tanto
+        en el frontend como en el backend.
+      </h2>
+      <nav class="flex flex-wrap gap-x-2 mt-5">
+        <SocialPill href="https">
+          <LinkedInIcon class="size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="github">
+          <GithubIcon class="size-6" />
+          Github
+        </SocialPill>
+        <SocialPill href="mailto:zakariaennahouti@gmail.com">
+          <GmailIcon class="size-6" />
+          zakariaennahouti@gmail.com
+        </SocialPill>
+      </nav>
+    </section>
+
+    <section id="proyectos" class="w-full mx-auto lg:w-[740px] py-22 flex flex-col">
+      <h2 class="text-2xl font-semibold flex gap-x-3 items-center">
+        <Code class="size-7" />
+				Proyectos
+				
+      </h2>
+			<Projects />
+    </section>
+
+		<section id="contacto" class="w-full mx-auto lg:w-[740px] py-22">
+			<h2 class="text-2xl font-semibold flex gap-x-3 items-center">
+        <GmailIcon class="size-7" />
+				Conatáctame
+				
+      </h2>
+			<Contacto />
+		</section>
+
+  </main>
+	<Footer class="flex justify-between items-center py-3 w-full xl:w-[1120px] mx-auto px-3" />
+</Layout>
