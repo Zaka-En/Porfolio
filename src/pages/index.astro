@@ -15,10 +15,8 @@ import Contacto from "../components/Contacto.astro";
 
 <Layout title="Portfolio de Zakaria">
   <main class="px-4">
-    <section id="sobre-mi" class="w-full mx-auto lg:w-[740px] py-22">
-      <h1
-        class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-4"
-      >
+    <section id="sobre-mi" class="text-white w-full mx-auto lg:w-[740px] py-22">
+      <h1 class="text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-4">
         Hola, soy Zakaria<div
           class="flex justify-center place-items-center-safe"
         >
@@ -47,24 +45,28 @@ import Contacto from "../components/Contacto.astro";
       </nav>
     </section>
 
-    <section id="proyectos" class="w-full mx-auto lg:w-[740px] py-22 flex flex-col">
+    <section
+      id="proyectos"
+      class="text-white w-full mx-auto lg:w-[740px] py-22 flex flex-col"
+    >
       <h2 class="text-2xl font-semibold flex gap-x-3 items-center">
         <Code class="size-7" />
-				Proyectos
-				
+        Proyectos
       </h2>
-			<Projects />
+      <Projects />
     </section>
 
-		<section id="contacto" class="w-full mx-auto lg:w-[740px] py-22">
-			<h2 class="text-2xl font-semibold flex gap-x-3 items-center">
+    <section id="contacto" class="text-white w-full mx-auto lg:w-[740px] py-22">
+      <h2 class="text-2xl font-semibold flex gap-x-3 items-center">
         <GmailIcon class="size-7" />
-				Conatáctame
-				
+        Conatáctame
       </h2>
-			<Contacto />
-		</section>
-
+      <Contacto />
+    </section>
   </main>
-	<Footer class="flex justify-between items-center py-3 w-full xl:w-[1120px] mx-auto px-3" />
+  <Footer
+    class="flex justify-between items-center py-3 w-full xl:w-[1120px] mx-auto px-3"
+  />
 </Layout>
+
+
