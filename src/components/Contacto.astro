@@ -1,19 +1,13 @@
 ---
-import emailjs from '@emailjs/browser';
-
-
+import emailjs from "@emailjs/browser";
 ---
 
-
-
 <div class="py-5 lg:py-10 px-4 mx-auto max-w-screen-md">
-  
   <form id="contactForm" action="#" class="space-y-8">
     <div>
       <label
         for="email"
-        class="block mb-2 text-sm font-medium  dark:text-gray-300"
-        >Correo</label
+        class="block mb-2 text-sm font-medium dark:text-gray-300">Correo</label
       >
       <input
         type="email"
@@ -26,13 +20,12 @@ import emailjs from '@emailjs/browser';
     <div>
       <label
         for="nombre"
-        class="block mb-2 text-sm font-medium  dark:text-gray-300"
-        >Nombre</label
+        class="block mb-2 text-sm font-medium dark:text-gray-300">Nombre</label
       >
       <input
         type="text"
         id="nombre"
-        class="shadow-sm bg-trasnparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+        class="shadow-sm bg-trasnparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
         placeholder="Menganito"
         required
       />
@@ -40,13 +33,12 @@ import emailjs from '@emailjs/browser';
     <div>
       <label
         for="asunto"
-        class="block mb-2 text-sm font-medium  dark:text-gray-300"
-        >Asunto</label
+        class="block mb-2 text-sm font-medium dark:text-gray-300">Asunto</label
       >
       <input
         type="text"
         id="asunto"
-        class="block p-3 w-full text-sm text-white/90 bg-transparent rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+        class="block p-3 w-full text-sm text-white/90 bg-transparent rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
         placeholder="Oferta de trabajo..."
         required
       />
@@ -60,7 +52,7 @@ import emailjs from '@emailjs/browser';
       <textarea
         id="mensaje"
         rows="6"
-        class="block p-2.5 w-full text-sm text-gray-900 bg-transparent rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+        class="block p-2.5 w-full text-sm text-gray-900 bg-transparent rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
         placeholder="Deja un mensaje..."></textarea>
     </div>
     <button
@@ -71,38 +63,42 @@ import emailjs from '@emailjs/browser';
   </form>
 </div>
 
-
 <style>
-  input{
+  input {
     margin-bottom: 20px;
   }
 </style>
 
-
 <script>
+  import emailjs from "@emailjs/browser";
 
-  import emailjs from '@emailjs/browser';
-
-   (function() {
+  (function () {
     emailjs.init("fr_yQ6Tvz7fXpWvVq"); // Consíguela en emailjs.com
   })();
 
-  document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const asunto = document.getElementById("asunto").value;
-    const mensaje = document.getElementById("mensaje").value;
-    const nombre = document.getElementById("nombre").value;
+      const email = document.getElementById("email");
+      const asunto = document.getElementById("asunto");
+      const mensaje = document.getElementById("mensaje");
+      const nombre = document.getElementById("nombre");
 
-    emailjs.send("service_8xdbd6x", "template_kix7eio", {
-      from_email: email,
-      subject: asunto,
-      message: mensaje,
-      name:nombre,
-    }).then(
-      response => alert("Correo enviado correctamente ✅"),
-      
-    ).catch(error => console.log(error));
-  });
+      emailjs
+        .send("service_8xdbd6x", "template_kix7eio", {
+          from_email: email.value,
+          subject: asunto.value,
+          message: mensaje.value,
+          name: nombre.value,
+        })
+        .then( () => {
+          alert("Correo enviado correctamente ✅");
+          setTimeout(() => {
+            document.getElementById("contactForm").reset();
+          }, 1500);
+        })
+        .catch((error) => console.log(error));
+    });
 </script>
