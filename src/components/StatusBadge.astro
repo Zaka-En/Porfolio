@@ -1,0 +1,9 @@
+---
+const { status } = Astro.props;
+const isSuccess = status === "success";
+const baseClass = "text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm hidden";
+const colorClass = isSuccess ? "bg-green-700" : "bg-red-700 hidden";
+---
+<span class={`${baseClass} ${colorClass}`}>
+  <slot />
+</span>

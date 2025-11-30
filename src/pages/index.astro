@@ -9,13 +9,15 @@ import Code from "../icons/CodeIcon.astro";
 import Projects from "../components/Projects.astro";
 import Footer from "../components/Footer.astro";
 import Contacto from "../components/Contacto.astro";
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import CVIcon from "../icons/CVIcon.astro";
+import Habilidades from "../components/Habilidades.astro";
+import TecnologiaIcon from "../icons/TecnologiaIcon.astro";
+
 ---
 
 <Layout title="Portfolio de Zakaria">
   <main class="px-4">
-    <section id="sobre-mi" class="text-white w-full mx-auto lg:w-[740px] py-20">
+    <section id="sobre-mi" class="text-white w-full mx-auto lg:w-[740px] py-18">
       <h1 class="text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-4">
         Hola, soy Zakaria<div
           class="flex justify-center place-items-center-safe"
@@ -23,7 +25,7 @@ import Contacto from "../components/Contacto.astro";
           <Badge>Disponible para trabajar</Badge>
         </div>
       </h1>
-      <h2 class="opacity-80 text-xl lg:text-1.5xl text-pretty">
+      <h2 class="opacity-80 text-xl lg:text-1.5xl text-pretty text-justify">
         Soy un <span class="text-yellow-300">Desarrollador web</span> recién graduado
         en el ciclo formativo superior de Desarrollo de Aplicaciones Web (DAW). Me
         apasiona crear soluciones digitales funcionales y bien estructuradas, tanto
@@ -42,12 +44,16 @@ import Contacto from "../components/Contacto.astro";
           <GmailIcon class="size-6" />
           zakariaennahouti@gmail.com
         </SocialPill>
+        <SocialPill href="/CVZakariaEnnahouti.pdf" download>
+          <CVIcon class="size-6"/>
+          Mi CV
+        </SocialPill>
       </nav>
     </section>
-
+    
     <section
       id="proyectos"
-      class="text-white w-full mx-auto lg:w-[740px] py-20 flex flex-col"
+      class="text-white w-full mx-auto lg:w-[740px] py-18 flex flex-col"
     >
       <h2 class="text-2xl font-semibold flex gap-x-3 items-center">
         <Code class="size-7" />
@@ -56,10 +62,21 @@ import Contacto from "../components/Contacto.astro";
       <Projects />
     </section>
 
-    <section id="contacto" class="text-white w-full mx-auto lg:w-[740px] py-20">
+    <section
+      id="habilidades"
+      class="text-white w-full mx-auto lg:w-[740px] py-18 flex flex-col"
+    >
+      <h2 class="text-2xl font-semibold flex gap-x-3 items-center">
+        <TecnologiaIcon />
+        Tecnologías
+      </h2>
+      <Habilidades />
+    </section>
+
+    <section id="contacto" class="text-white w-full mx-auto lg:w-[740px] py-18">
       <h2 class="text-2xl font-semibold flex gap-x-3 items-center">
         <GmailIcon class="size-7" />
-        Conatáctame
+        Contáctame
       </h2>
       <Contacto />
     </section>

@@ -1,104 +1,133 @@
 ---
-import emailjs from "@emailjs/browser";
+import StatusBadge from "./StatusBadge.astro";
+
+// Reusable input styles
+const inputClass =
+  "mb-4 shadow-sm bg-transparent border border-gray-300 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light";
 ---
 
-<div class="py-5 lg:py-10 px-4 mx-auto max-w-screen-md">
-  <form id="contactForm" action="#" class="space-y-8">
+<div class="py-3 lg:py-10 px-4 mx-auto max-w-screen-md">
+  <form id="contactForm" class="space-y-6">
+    <!-- Email -->
     <div>
       <label
         for="email"
-        class="block mb-2 text-sm font-medium dark:text-gray-300">Correo</label
+        class="block mb-2 text-sm font-medium dark:text-gray-300"
       >
+        Correo
+      </label>
       <input
         type="email"
         id="email"
-        class="shadow-sm bg-trasnparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+        class={inputClass}
         placeholder="name@email.com"
         required
       />
     </div>
+
+    <!-- Nombre -->
     <div>
       <label
         for="nombre"
-        class="block mb-2 text-sm font-medium dark:text-gray-300">Nombre</label
+        class="block mb-2 text-sm font-medium dark:text-gray-300"
       >
+        Nombre
+      </label>
       <input
         type="text"
         id="nombre"
-        class="shadow-sm bg-trasnparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+        class={inputClass}
         placeholder="Menganito"
         required
       />
     </div>
+
+    <!-- Asunto -->
     <div>
       <label
         for="asunto"
-        class="block mb-2 text-sm font-medium dark:text-gray-300">Asunto</label
+        class="block mb-2 text-sm font-medium dark:text-gray-300"
       >
+        Asunto
+      </label>
       <input
         type="text"
         id="asunto"
-        class="block p-3 w-full text-sm text-white/90 bg-transparent rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+        class={inputClass}
         placeholder="Oferta de trabajo..."
         required
       />
     </div>
-    <div class="sm:col-span-2 mb-2">
+
+    <!-- Mensaje -->
+    <div>
       <label
         for="mensaje"
         class="block mb-2 text-sm font-medium text-white dark:text-gray-300"
-        >Mensaje</label
       >
+        Mensaje
+      </label>
       <textarea
         id="mensaje"
         rows="6"
-        class="block p-2.5 w-full text-sm text-gray-900 bg-transparent rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-        placeholder="Deja un mensaje..."></textarea>
+        class={inputClass}
+        placeholder="Deja un mensaje..."
+        required></textarea>
     </div>
+
+    <!-- Submit -->
     <button
       type="submit"
       class="py-3 px-3 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:bg-white/10 cursor-pointer"
-      >Enviar</button
     >
+      Enviar
+    </button>
+
+    <!-- Status Badges -->
+    <StatusBadge id="okBadge" status="success">Enviado correctamente</StatusBadge>
+    <StatusBadge id="failBadge" status="fail">Error al enviar</StatusBadge>
   </form>
 </div>
-
-<style>
-  input {
-    margin-bottom: 20px;
-  }
-</style>
 
 <script>
   import emailjs from "@emailjs/browser";
 
-  (function () {
-    emailjs.init("fr_yQ6Tvz7fXpWvVq"); // Consíguela en emailjs.com
-  })();
+  emailjs.init("fr_yQ6Tvz7fXpWvVq");
 
-  document
-    .getElementById("contactForm")
-    .addEventListener("submit", function (e) {
-      e.preventDefault();
+  const form = document.getElementById("contactForm");
+  const okBadge = document.getElementById("okBadge");
+  const failBadge = document.getElementById("failBadge");
 
-      const email = document.getElementById("email");
-      const asunto = document.getElementById("asunto");
-      const mensaje = document.getElementById("mensaje");
-      const nombre = document.getElementById("nombre");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      emailjs
-        .send("service_8xdbd6x", "template_kix7eio", {
-          from_email: email.value,
-          subject: asunto.value,
-          message: mensaje.value,
-          name: nombre.value,
-        })
-        .then( () => {
-          alert("Correo enviado correctamente ✅");
-          setTimeout(() => {
-            document.getElementById("contactForm").reset();
-          }, 1500);
-        })
-        .catch((error) => console.log(error));
-    });
+    const data = {
+      from_email: form.email.value,
+      subject: form.asunto.value,
+      message: form.mensaje.value,
+      name: form.nombre.value,
+    };
+
+    try {
+      await emailjs.send("service_8xdbd6x", "template_kix7eio", data);
+
+      failBadge.classList.add("hidden");
+      okBadge.classList.remove("hidden");
+
+      setTimeout(() => {
+        form.reset();
+        okBadge.classList.add("hidden");
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+
+      okBadge.classList.add("hidden");
+      failBadge.classList.remove("hidden");
+
+      setTimeout(() => {
+        form.reset();
+        failBadge.classList.add("hidden");
+      }, 1000);
+    }
+  });
 </script>

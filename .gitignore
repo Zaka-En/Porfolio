@@ -1,6 +1,5 @@
 # build output
 dist/
-backend/
 
 # generated types
 .astro/
@@ -23,3 +22,5 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+
