@@ -11,5 +11,6 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  site: 'https://zakadev.netlify.app/', 
 });
 
