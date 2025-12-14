@@ -92,7 +92,12 @@ const inputClass =
 <script>
   import emailjs from "@emailjs/browser";
 
-  emailjs.init("fr_yQ6Tvz7fXpWvVq");
+  
+  const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+  const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+
+  emailjs.init(PUBLIC_KEY);
 
   const form = document.getElementById("contactForm");
   const okBadge = document.getElementById("okBadge");
@@ -109,7 +114,7 @@ const inputClass =
     };
 
     try {
-      await emailjs.send("service_8xdbd6x", "template_kix7eio", data);
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, data);
 
       failBadge.classList.add("hidden");
       okBadge.classList.remove("hidden");
@@ -117,7 +122,7 @@ const inputClass =
       setTimeout(() => {
         form.reset();
         okBadge.classList.add("hidden");
-      }, 1000);
+      }, 3000);
     } catch (err) {
       console.error(err);
 
@@ -125,9 +130,8 @@ const inputClass =
       failBadge.classList.remove("hidden");
 
       setTimeout(() => {
-        form.reset();
         failBadge.classList.add("hidden");
-      }, 1000);
+      }, 3000);
     }
   });
 </script>
