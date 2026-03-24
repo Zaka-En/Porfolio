@@ -1,17 +1,15 @@
 ---
-import foto2 from "../../assets/foto2.webp";
+import foto2 from "../../public/foto2.webp";
 ---
 
 <header
   class="flex justify-between items-center py-3 w-full xl:w-[1120px] mx-auto px-3 relative"
 >
-  <a href="https://www.linkedin.com/in/zakaria-ennahouti-152915287" target="_blank">
-    <img
-      class="rounded-full w-14 h-14"
-      src={foto2}
-      alt="Photo Zakaria"
-
-    />
+  <a
+    href="https://www.linkedin.com/in/zakaria-ennahouti-152915287"
+    target="_blank"
+  >
+    <img class="rounded-full w-14 h-14" src={foto2} alt="Photo Zakaria" />
   </a>
 
   <nav class="hidden md:flex flex-row opacity-90">
@@ -72,9 +70,7 @@ import foto2 from "../../assets/foto2.webp";
   }
 
   #menu:checked ~ label .bar:nth-child(2) {
-    transform: scaleX(
-      0
-    );
+    transform: scaleX(0);
     opacity: 0;
   }
 
