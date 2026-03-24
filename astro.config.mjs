@@ -12,5 +12,4 @@ export default defineConfig({
     enabled: false,
   },
   site: "https:/ezaka.es/",
-  base: "/Porfolio/",
 });
